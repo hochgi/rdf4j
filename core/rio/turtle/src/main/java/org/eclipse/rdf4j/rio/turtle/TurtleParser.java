@@ -1255,12 +1255,12 @@ public class TurtleParser extends AbstractRDFParser {
 	 */
 	protected void unread(String string) throws IOException {
 		int i = string.codePointCount(0, string.length());
-		while ( i > 0 ) {
+		while (i > 0) {
 			final int codePoint = string.codePointBefore(i);
 			if (Character.isSupplementaryCodePoint(codePoint)) {
 				final char[] surrogatePair = Character.toChars(codePoint);
 				reader.unread(surrogatePair);
-				i -= surrogatePair.length();
+				i -= surrogatePair.length;
 			} else {
 				reader.unread(codePoint);
 				i--;
